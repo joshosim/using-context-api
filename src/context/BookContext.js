@@ -1,18 +1,21 @@
-import React from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
+import { v1 as uuid } from "uuid";
 
 export const BookContext = createContext();
 
 const BookContextProvider = (props) => {
   const [books, setBooks] = useState([
-    { title: "name of the wind", id: 1 },
-    { title: "the way of kings", id: 2 },
-    { title: "the final empire", id: 3 },
-    { title: "the hero of ages", id: 4 },
+    { title: "Read and Pray", author: "Osim Uka", id: 1 },
+    { title: "Knowing God and His Will", author: "Patrick Miles", id: 2 },
   ]);
+  const addBook = (title, author) => {
+    setBooks([...books, { title: title, author: author, id: uuid() }]);
+  };
+  const removeBook = (id) => {
+    setBooks(books.filter((book) => book.id !== id));
+  };
   return (
-    <BookContext.Provider value={{ books }}>
+    <BookContext.Provider value={{ books, addBook, removeBook }}>
       {props.children}
     </BookContext.Provider>
   );

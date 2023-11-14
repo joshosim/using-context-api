@@ -1,25 +1,19 @@
 import React from "react";
+import BookContextProvider from "./context/BookContext";
+import Navbar from "./component/Navbar";
+import BookList from "./component/BookList";
+import BookForm from "./component/BookForm";
 //import SongList from "./funcComponents/SongList";
 //import ChatPage from "./chatPageComp/ChatPage";
-import Navbar from "./components/Navbar";
-import Booklist from "./components/Bokklist";
-import ThemeContextProvider from "./context/ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
-import AuthContextProvider from "./context/AuthContext";
-import BookContextProvider from "./context/BookContext";
 
 function App() {
   return (
-    <div className="max-w-[400px] m-8 mx-auto text-center">
-      <ThemeContextProvider>
-        <AuthContextProvider>
-          <Navbar />
-          <BookContextProvider>
-            <Booklist />
-          </BookContextProvider>
-          <ThemeToggle />
-        </AuthContextProvider>
-      </ThemeContextProvider>
+    <div className="bg-[#4c2a4c] max-w-[700px] w-[90%] m-8 mx-auto text-center">
+      <BookContextProvider>
+        <Navbar />
+        <BookList />
+        <BookForm />
+      </BookContextProvider>
       {/* <SongList /> */}
       {/* <ChatPage /> */}
     </div>
