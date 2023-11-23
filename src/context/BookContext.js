@@ -1,15 +1,29 @@
 import React, { createContext, useState } from "react";
 import { v1 as uuid } from "uuid";
+import Uka from "../img/uka.png";
 
 export const BookContext = createContext();
 
 const BookContextProvider = (props) => {
   const [books, setBooks] = useState([
-    { title: "Read and Pray", author: "Osim Uka", id: 1 },
-    { title: "Knowing God and His Will", author: "Patrick Miles", id: 2 },
+    {
+      name: "Osim Uka",
+      dept: "MEE",
+      image_url: Uka,
+      id: 1,
+    },
+    {
+      name: "Osim Uka",
+      dept: "FST",
+      image_url: Uka,
+      id: 2,
+    },
   ]);
-  const addBook = (title, author) => {
-    setBooks([...books, { title: title, author: author, id: uuid() }]);
+  const addBook = (name, dept, image_url) => {
+    setBooks([
+      ...books,
+      { name: name, dept: dept, image_url: image_url, id: uuid() },
+    ]);
   };
   const removeBook = (id) => {
     setBooks(books.filter((book) => book.id !== id));
