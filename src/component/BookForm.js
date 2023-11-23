@@ -16,7 +16,7 @@ const BookForm = () => {
       <input
         className="w-full p-[10px] my-[0.325rem] mx-0 bg-[#3c1f3c] text-white border-none"
         type="text"
-        placeholder="book title"
+        placeholder="Name"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
@@ -24,7 +24,7 @@ const BookForm = () => {
       <input
         className="w-full p-[10px] my-[0.325rem] mx-0 bg-[#3c1f3c] text-white border-none"
         type="text"
-        placeholder="book author"
+        placeholder="Department"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
         required
@@ -32,7 +32,7 @@ const BookForm = () => {
       <input
         className="py-[6px] px-[20px] my-[0.325rem] mx-auto bg-[#eee] block"
         type="submit"
-        value="Add Book"
+        value="Add Student"
       />
     </form>
   );

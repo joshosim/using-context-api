@@ -6,7 +6,7 @@ const BookList = () => {
   const { books } = useContext(BookContext);
   return books.length ? (
     <div className="m-5">
-      <ul>
+      <ul className="grid grid-cols-3">
         {books.map((book) => {
           return <BookDetail book={book} key={book.id} />;
         })}
@@ -14,7 +14,7 @@ const BookList = () => {
     </div>
   ) : (
     <div className="p-[20px] text-center text-white font-bold">
-      No Books to read. Hello free time.
+      No Students in Class.
     </div>
   );
 };
