@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { BookContext } from "../context/BookContext";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const BookDetail = ({ book }) => {
-  const { removeBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   return (
-    <li
-      className="bg-[#6d3d6d] text-white font-medium my-[10px] mx-auto cursor-pointer hover:line-through hover:opacity-70 rounded-xl h-60 w-[10rem] border-2 border-white flex flex-col items-center"
-      onClick={() => removeBook(book.id)}
-    >
+    <li className="bg-[#6d3d6d] relative text-white font-medium my-[10px] mx-auto cursor-pointer rounded-xl h-60 w-[10rem] border-2 border-white flex flex-col items-center">
       <img
         src={book.image_url}
         alt={book.image_url}
@@ -17,6 +15,15 @@ const BookDetail = ({ book }) => {
         <div className="font-bold text-xl flex-wrap">{book.name}</div>
         <div>{book.dept}</div>
       </div>
+      <AiOutlineDelete
+        className="absolute bottom-0 right-0 hover:opacity-70 hover:scale-105"
+        size={25}
+        color="white"
+        onClick={() => {
+          alert(`Do you want to delete ${book.name} from the list?`);
+          dispatch({ type: "DELETE_PERSON", id: book.id });
+        }}
+      />
     </li>
   );
 };

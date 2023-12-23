@@ -3,8 +3,6 @@ import BookContextProvider from "./context/BookContext";
 import Navbar from "./component/Navbar";
 import BookList from "./component/BookList";
 import BookForm from "./component/BookForm";
-//import SongList from "./funcComponents/SongList";
-//import ChatPage from "./chatPageComp/ChatPage";
 
 function App() {
   return (
@@ -14,8 +12,6 @@ function App() {
         <BookList />
         <BookForm />
       </BookContextProvider>
-      {/* <SongList /> */}
-      {/* <ChatPage /> */}
     </div>
   );
 }

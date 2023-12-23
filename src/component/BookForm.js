@@ -1,19 +1,27 @@
 import React, { useContext, useState } from "react";
 import { BookContext } from "../context/BookContext";
-import Uka from "../img/uka.png";
 
 const BookForm = () => {
-  const { addBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   const [name, setName] = useState("");
   const [dept, setDept] = useState("");
-  const [image_url, setImageurl] = useState(Uka);
+  const [image_url, setImageurl] = useState(null);
   const handleImageChange = (e) => {
-    console.log(e.target.image_url);
-    setImageurl(URL.createObjectURL(e.target.image_url[0]));
+    const file = e.target.files[0];
+    if (file) {
+      setImageurl(file);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBook(name, dept, image_url);
+    dispatch({
+      type: "ADD_PERSON",
+      book: {
+        name,
+        dept,
+        image_url: URL.createObjectURL(image_url),
+      },
+    });
     setName("");
     setDept("");
   };
@@ -35,13 +43,19 @@ const BookForm = () => {
         onChange={(e) => setDept(e.target.value)}
         required
       />
-      <input type="file" onChange={handleImageChange} />
-
-      <input
-        className="py-[6px] px-[20px] my-[0.325rem] mx-auto bg-[#eee] block"
-        type="submit"
-        value="Add Student"
-      />
+      <div className="flex justify-between items-center">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          required
+        />
+        <input
+          className="py-[6px] px-[20px] my-[0.325rem] mx-auto bg-[#eee] block"
+          type="submit"
+          value="Add Student"
+        />
+      </div>
     </form>
   );
 };
